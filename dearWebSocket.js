@@ -71,9 +71,9 @@ class DearWebSocket {
     this.instance.close(code, reason);
   }
 
-  send(data, option) {
+  send(data) {
     try {
-      this.instance.send(data, option);
+      this.instance.send(data);
     } catch (e) {
       this.instance.emit('error', e);
     }
@@ -86,7 +86,7 @@ class DearWebSocket {
     setTimeout(() => {
       console.log('WebSocketClient: reconnecting...');
       that.reconnectAttempts += 1;
-      that.open(that.url);
+      that.open();
     }, this.reconnectInterval);
   }
 
